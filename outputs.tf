@@ -27,7 +27,9 @@ output "private_v4_cidr_blocks" {
 output "subnet_id" {
   value = flatten([for subnet in yandex_vpc_subnet.private : subnet.id])
 }
-
+output "private_subnet_ids" {
+  value = [for subnet in yandex_vpc_subnet.private : subnet.id]
+}
 output "static_IP" {
   value = yandex_vpc_address.addr.external_ipv4_address[0].address
 
